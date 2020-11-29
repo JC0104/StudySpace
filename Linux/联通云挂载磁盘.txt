@@ -1,0 +1,9 @@
+pvcreate  /dev/vdb
+vgcreate  unicomvg /dev/vdb
+lvcreate -l 100%VG  -n unicomvol unicomvg
+mkfs.ext4  /dev/unicomvg/unicomvol
+echo  "/dev/mapper/unicomvg-unicomvol /unicom ext4 defaults 0 0 " >>/etc/fstab
+mkdir /unicom
+mount -a
+lsblk
+
